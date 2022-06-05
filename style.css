@@ -1,0 +1,46 @@
+.container {
+    background-color: #000;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 10rem;
+}
+
+.default {
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+
+.box1 {
+    background-color: rgb(101, 238, 188);
+}
+
+.box2 {
+    background-color: rgb(239, 72, 72);
+}
+
+.box3 {
+    background-color: rgb(111, 122, 209);
+}
+
+.box4 {
+    background-color: rgb(194, 242, 98);
+}
+
+.effector {
+    /* margin-top: 4rem; */
+    padding: 1rem;
+    background-color: pink;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 10rem;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    margin-top: 4rem;
+}
