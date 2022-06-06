@@ -40,15 +40,15 @@ function A() {
   var B = 100;
   console.log("Value of variable B : ", B);
 
-  C();
-
   var C = () => {
     console.log("Value of variable B inside func C() : ", B);
   };
+
+  C();
 }
 
 A();
-console.log("Value of variable B : ", B);
+// console.log("Value of variable B : ", B);   // ReferenceError: B is not defined
 
 // ------------------------------------
 //               ARRAY
@@ -75,7 +75,7 @@ console.log(fruits.slice(1, 4));
 */
 var prep = ["is", "at", "before", "after", "above"];
 prep.splice(2, 1, "beneath", "near");
-// prep.splice(3);
+// prep.splice(3);    // equivalent to prep.splice(3 , 3)   overwrite with NULL
 console.table(prep);
 
 //   fill ()  :   array.fill(value, start, end)
@@ -131,3 +131,17 @@ for (const [key, value] of map1.entries()) {
 map1.forEach(function (value, key) {
   console.log(key + " = " + value);
 });
+
+const hashMap = new Map([
+  ["01", "C++"],
+  ["02", "C"],
+  ["03", "Javascript"],
+]);
+
+hashMap.set("04", "Java");
+
+for (const [key, value] of hashMap.entries()) {
+  console.log(key, " --> ", value);
+}
+
+console.log(hashMap.has("02"));
