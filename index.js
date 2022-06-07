@@ -57,7 +57,6 @@ colorChanger(box3, getColor(box3));
 colorChanger(box4, getColor(box4));
 
 var x = document.getElementById("frm1");
-
 console.log(x.elements[1].value);
 
 var text = "";
@@ -67,11 +66,12 @@ for (i = 0; i < x.length; i++) {
 }
 
 var node;
-var HTag = document.createElement("h3");
-var display = document.querySelector("#display");
+var HTag = document.createElement("h3"); // Create  <h2> tag </h2>
+var display = document.querySelector("#display"); // P Tag
 
 inputBox.addEventListener("keyup", function (e) {
   console.log(e.target.value);
+  console.log("Onchange => ", inputBox.value);
 
   display.innerHTML = "<h2>" + e.target.value + "</h2>";
   // display.innerText = "<h2>" + e.target.value + "</h2>"; // returns the text content
@@ -81,7 +81,16 @@ inputBox.addEventListener("keyup", function (e) {
   // display.appendChild(HTag);
 });
 
+//  Inline ONCHANGE is also applicable.
+inputBox.onchange = function () {
+  inputBox.value = inputBox.value.toUpperCase();
+};
+
 const clickFunc = () => {
-  // alert("click");
   window.location = "https://stackoverflow.com/questions/52229901/navigate-to-route-on-button-click";
+};
+
+const changeFunc = (selectOption) => {
+  var value = selectOption.value;
+  console.log(value);
 };

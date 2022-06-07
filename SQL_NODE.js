@@ -1,4 +1,3 @@
-
 /*
 
     Link Node JS Docs ::  https://nodejs.dev/learn
@@ -9,27 +8,6 @@ res.status(statusCode).json();
 res.status(200).send('New User Added Success... ');
  
 
-  -------------------------
-         CASE STYLES 
-  -------------------------
-       * camelCase
-       * PascalCase
-       * snake_case
-       * kebab-case  
-
-
-  ------------------------------
-       CURRENT DATE & TIME 
-   ------------------------------      
-        let currTime = new Date(Date.now());
-
-        currTime.toDateString();        // 'Fri Jan 28 2022'
-        currTime.toLocaleTimeString()   // '12:24:57 PM'
-        currTime.toLocaleDateString();  // '1/28/2022'
-
-
-
-
 
 if (condition)
    throw new Error("Missing Field");
@@ -38,40 +16,7 @@ if (condition)
  fs Module  --> Provides functionality to access and interact with the file system.
 
  
-    -------------------- ||   javascript Tweeks   || --------------------
-
- const text = '["Ford", "BMW", "Audi", "Fiat"]';    --->   JSON.parse() to convert text/string into a JavaScript Array / Object
- const myArr = JSON.parse(text);
-
- var params = JSON.parse(JSON.stringify(defaultParams));
-
- JSON.stringify(arr / obj)       -->   When data is sent to a server it must be sent as a STRING. 
-                                       JSON.stringify() method converts JavaScript data to a JSON-formatted string.
-                                        
- data.image?.trim() || defaultBannerImage
-
-  // APPEND FIELDS IN OBJECT 
-  _____________________________
-
-     var person = { name: 'Curl', age: 23 };
- 
-        person.sex = 'Female';
-        person['sex'] = 'Female';
-
-   Spread Operator :    
-             var prop = { sex: 'Female' };   
-             var newObj = {...person, ...prop};
- 
-
-   const array = [1, 2, 3, 4];
-
-const map = array.map((x, index) => {
-  console.log(index);
-  return x + index;
-});
-
-
-   -------------------- ||   Async - Await Function  || --------------------
+  -------------------- ||   Async - Await Function  || --------------------
   let hello = async function() { return "Hello" };
   hello();
 

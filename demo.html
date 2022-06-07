@@ -35,6 +35,7 @@
       <form id="frm1" action="/action_page.php">
         <label for="fname">First name:</label><br />
         <input type="text" id="fname" name="fname" value="John" /><br />
+
         <label for="lname">Last name:</label><br />
         <input type="text" id="lname" name="lname" value="Doe" />
       </form>
@@ -45,16 +46,15 @@
       <form><input type="text" id="input" name="name" /><br /></form>
       <p id="display"></p>
 
-      <div
-        style="
-          margin: 2rem;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-        "
-      >
+      <div style="margin: 2rem; align-items: center; justify-content: center; text-align: center">
         <button type="button" onclick="clickFunc()">Click Me!</button>
       </div>
+
+      <!--  Inline OnChange  -->
+      <select onChange="changeFunc(this)">
+        <option value="1">Text 1</option>
+        <option value="2">Text 2</option>
+      </select>
     </div>
 
     <!--   JAVASCRIPT   -->
