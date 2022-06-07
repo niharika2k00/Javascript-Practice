@@ -10,13 +10,18 @@ var effectBox = document.querySelector(".effector");
 var inputBox = document.querySelector("#input");
 
 // document.querySelector(".box2").style.backgroundColor = "deeppink";
-
-// console.log(window);
 // console.log(window.getComputedStyle(box2).backgroundColor);
 
+/* 
+      GET THE COLOR OF AN ELEMENT
+    ---------------------------------        
+    1) If style is INLINE then use     ==>     event.target.style.backgroundColor;
+    2) Else       ==>       window.getComputedStyle(box2).backgroundColor
+*/
+
 box2.addEventListener("click", function (event) {
-  event.target.style.backgroundColor = "green";
-  console.log("BOX 2 color :  ", event.target.style.backgroundColor);
+  event.target.style.backgroundColor = "#ff595e";
+  console.log("Get Box Color from Inline Styling :  ", event.target.style.backgroundColor);
 });
 
 //  GRAB the Style
@@ -29,7 +34,7 @@ console.log("Color: " + color);
 
 var toggle = (clickedElement, text) => {
   console.log("Initial ", text);
-
+  0;
   if (text === "Yeah !") clickedElement.innerHTML = text;
   else clickedElement.innerHTML = "Yeah !";
 
@@ -68,9 +73,15 @@ var display = document.querySelector("#display");
 inputBox.addEventListener("keyup", function (e) {
   console.log(e.target.value);
 
-  display.innerText = e.target.value;
+  display.innerHTML = "<h2>" + e.target.value + "</h2>";
+  // display.innerText = "<h2>" + e.target.value + "</h2>"; // returns the text content
 
   // node = document.createTextNode(e.target.value);
   // HTag.appendChild(node);
-  // display.appendChild(node);
+  // display.appendChild(HTag);
 });
+
+const clickFunc = () => {
+  // alert("click");
+  window.location = "https://stackoverflow.com/questions/52229901/navigate-to-route-on-button-click";
+};
