@@ -50,6 +50,20 @@ function A() {
 A();
 // console.log("Value of variable B : ", B);   // ReferenceError: B is not defined
 
+// -----------------------------------------------
+//               CALLBACK  FUNCTION
+// -----------------------------------------------
+function callbackFunction(name) {
+  console.log("Hello " + name);
+}
+
+function outerFunction(callback) {
+  let name = "Niharika";
+  callback(name);
+}
+
+outerFunction(callbackFunction);
+
 // ------------------------------------
 //               ARRAY
 // ------------------------------------

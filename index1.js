@@ -4,18 +4,47 @@ console.log(aa);
 var aa = "Helloooooo  : )";
 console.log(aa);
 
-var message;
-console.log(message);
-message = "The variable Has been hoisted";
+// var message;
+// console.log(message); // undefined
+// message = "The variable Has been hoisted";
 
-//   Callback Function
-function callbackFunction(name) {
-  console.log("Hello " + name);
+/* let b = 10; // created in the script scope
+{
+  var a = 100;
+  let b = 45; // created in the Block scope
+  const c = 78;
+
+  console.log(a);
+  console.log(b);
+  console.log(c);
+} 
+
+console.log("Outer ", b); */
+
+/* function z() {
+  var b = 1000;
+  function x() {
+    var a = 200;
+
+    function y() {
+      console.log("Value coming due to Lexical Environment : ", a, b);
+    }
+
+    y();
+    return y;
+  }
+
+  x();
+  return x;
 }
 
-function outerFunction(callback) {
-  let name = "Niharika";
-  callback(name);
-}
+var res = z();
+console.log("Result from the func call " + res); */
 
-outerFunction(callbackFunction);
+// In JavaScript, all objects interact by REFERENCE when setting them equal to each other.
+let c = { greeting: "Hey!" };
+let d;
+
+d = c;
+c.greeting = "Hello";
+console.log(d.greeting); // Hello
