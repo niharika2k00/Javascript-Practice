@@ -70,11 +70,13 @@ closure();
 
 // x()(); // calling the inenr func
 
-(function () {
-  var a = (b = 42);
-})();
+var c = 21;
+var girl = function () {
+  console.log(c);
+  var c = 20;
+};
+girl();
 
-console.log(b);
-console.log(typeof b);
-console.log(typeof a);
-console.log(a);
+//  Output : undefined
+
+//  https://www.toptal.com/javascript/interview-questions

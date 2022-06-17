@@ -114,17 +114,30 @@ console.log(typeof typeof 1); // String
 console.log(1 < 2 < 3); // 1 < 2 yes  => 1 < 3  yes =>  TRUE  =>  1
 console.log(3 > 2 > 1); // 3 > 2 yes  =>  1 > 3  NO  =>   FALSE  => 0
 
+function foo1() {
+  return {
+    bar: "hello",
+  };
+}
+
+function foo2() {
+  return;
+  {
+    bar: "hello";
+  }
+}
+
 function fun() {}
 
 fun();
 
 function fun() {
-  for (var i = 0; i < 5; i++) {
-    (function (x) {
-      setTimeout(function () {
-        console.log(x);
-      }, x * 1000);
-    })(i);
+  let i;
+  for (i = 0; i < 3; i++) {
+    const log = () => {
+      console.log(i);
+    };
+    setTimeout(log, 100);
   }
 }
 
