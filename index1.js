@@ -69,3 +69,12 @@ console.log(closure);
 closure();
 
 // x()(); // calling the inenr func
+
+(function () {
+  var a = (b = 42);
+})();
+
+console.log(b);
+console.log(typeof b);
+console.log(typeof a);
+console.log(a);
