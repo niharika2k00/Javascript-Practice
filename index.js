@@ -65,7 +65,7 @@ for (i = 0; i < x.length; i++) {
   text += x.elements[i].value + "<br>";
 }
 
-var node;
+var content;
 var HTag = document.createElement("h3"); // Create  <h2> tag </h2>
 var display = document.querySelector("#display"); // P Tag
 
@@ -73,11 +73,11 @@ inputBox.addEventListener("keyup", function (e) {
   console.log(e.target.value);
   console.log("Onchange => ", inputBox.value);
 
-  display.innerHTML = "<h2>" + e.target.value + "</h2>";
+  display.innerHTML = "<h2>" + e.target.value + "</h2>"; // `<h2> val </h2>`
   // display.innerText = "<h2>" + e.target.value + "</h2>"; // returns the text content
 
-  // node = document.createTextNode(e.target.value);
-  // HTag.appendChild(node);
+  // content = document.createTextNode(e.target.value);
+  // HTag.appendChild(content);
   // display.appendChild(HTag);
 });
 
@@ -90,7 +90,7 @@ const clickFunc = () => {
   window.location = "https://stackoverflow.com/questions/52229901/navigate-to-route-on-button-click";
 };
 
-const changeFunc = (selectOption) => {
+const changeSelect = (selectOption) => {
   var value = selectOption.value;
   console.log(value);
 };

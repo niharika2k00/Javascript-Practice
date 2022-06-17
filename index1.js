@@ -50,9 +50,12 @@ c.greeting = "Hello";
 console.log(d.greeting); // Hello
  */
 
+//  Outer Function
 function x() {
   var a = 200,
     b = 500;
+
+  //  Inner Function
   function y() {
     console.log("Value coming due to Lexical Environment : ", a);
   }
@@ -62,7 +65,7 @@ function x() {
 }
 
 var closure = x();
-// console.log(closure);
+console.log(closure);
 closure();
 
 // x()(); // calling the inenr func

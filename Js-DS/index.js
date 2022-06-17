@@ -77,12 +77,12 @@ function allPositive(el, index, arr) {
   return el > 0;
 }
 
-//   slice ()  :   array.slice(start, end)         exclusive END
+//   slice ()  :   array.slice(start, end)         exclusive END.
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
 console.log(fruits.slice(-3, -1));
 console.log(fruits.slice(1, 4));
 
-//  splice ()   :    array.splice(index, howMany, item1, ....., itemX)    ==>  REMOVES the element and put into a new array
+//  splice ()   :    array.splice(index, howMany, item1, ....., itemX)    ==>  REMOVES the element and put into a new array.
 /* 
     -  Overwrite the Original Array 
     -  Add element at postion 2 & remove 1 element
