@@ -50,26 +50,6 @@ c.greeting = "Hello";
 console.log(d.greeting); // Hello
  */
 
-//  Outer Function
-function x() {
-  var a = 200,
-    b = 500;
-
-  //  Inner Function
-  function y() {
-    console.log("Value coming due to Lexical Environment : ", a);
-  }
-
-  // y();
-  return y;
-}
-
-var closure = x();
-console.log(closure);
-closure();
-
-// x()(); // calling the inenr func
-
 var c = 21;
 var girl = function () {
   console.log(c);
@@ -78,5 +58,3 @@ var girl = function () {
 girl();
 
 //  Output : undefined
-
-//  https://www.toptal.com/javascript/interview-questions

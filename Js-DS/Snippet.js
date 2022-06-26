@@ -74,18 +74,35 @@ console.log(typeof b);
 console.log(typeof a);
 console.log(a);
 
-/*   Output : 
- 42
- number 
- undefined
- not defined
- 
- 
-     Explanation : 
+/* Output : 
+42
+number 
+undefined
+not defined */
+
+(function () {
+  try {
+    throw new Error();
+  } catch (x) {
+    var x = 1,
+      y = 2;
+    console.log(x);
+  }
+  console.log(x);
+  console.log(y);
+})();
+
+/* Output : 
+1 
+undefined
+2 
+
+        Explanation : 
   variable a is function scoped so its available Locally in the function Execution Context
-  Whereas variable b is not declared so by default its being declared in the GLOBAL EXECUTION Context.
+  Whereas variable b is not declared in function scope so by default its being declared in the GLOBAL EXECUTION Context.
  */
 
+//   -------    SNIPPET - 5   -----------
 for (var i = 0; i < 5; i++) {
   setTimeout(function () {
     console.log(i);
@@ -108,6 +125,7 @@ fun();
 
 //  Output : 0 1 2 3 4
 
+//   -------    SNIPPET - 6   -----------
 console.log(typeof typeof 1); // String
 // typeof 1 will return "number" and typeof "number" will return string.
 
@@ -127,18 +145,23 @@ function foo2() {
   }
 }
 
-function fun() {}
+//   -------    SNIPPET - 6   -----------
+//  Outer Function
+function x() {
+  var a = 200,
+    b = 500;
 
-fun();
-
-function fun() {
-  let i;
-  for (i = 0; i < 3; i++) {
-    const log = () => {
-      console.log(i);
-    };
-    setTimeout(log, 100);
+  //  Inner Function
+  function y() {
+    console.log("Value coming due to Lexical Environment : ", b);
   }
+
+  // y();
+  return y;
 }
 
-fun();
+var closure = x();
+console.log(closure);
+closure();
+
+// x()();   // call inenr func
