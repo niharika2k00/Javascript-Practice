@@ -81,6 +81,7 @@ str.substring(7, 13); //  Banana     [exclusive END]
 //               ARRAY
 // ------------------------------------
 
+//  ==================          ITERATION              =================
 //   every ()  :  array.every(function(currentValue, index, arr), thisValue)
 var num = [2, 45, -100, 96, -32];
 console.log("Result of every()  =>  ", num.every(allPositive)); //  false
@@ -89,6 +90,21 @@ function allPositive(el, index, arr) {
   console.log("index: ", index);
   return el > 0;
 }
+
+// forEach(val, index, arr);
+num.forEach((val, idx) => {
+  console.log(val);
+});
+
+//  map(val, index, arr);
+num.map((val, idx, arr) => {
+  console.log(val);
+});
+
+num.filter((val, idx, arr) => {
+  console.log(val);
+});
+// =======================================================================
 
 //   slice ()  :   array.slice(start, end)         exclusive END.
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -102,7 +118,7 @@ console.log(fruits.slice(1, 4));
 */
 var prep = ["is", "at", "before", "after", "above"];
 prep.splice(2, 1, "beneath", "near");
-// prep.splice(3);    // equivalent to prep.splice(3 , 3)   overwrite with NULL
+prep.splice(3); // equivalent to prep.splice(3 , 3)   overwrite with NULL
 console.table(prep);
 
 //   fill ()  :   array.fill(value, start, end)
@@ -111,7 +127,7 @@ console.table(prep);
     -  Replace the Element
 */
 fruits = ["Banana", "Orange", "Apple", "Mango"];
-// fruits.fill("Kiwi");
+fruits.fill("Kiwi");
 fruits.fill("Kiwi", 0, 1);
 console.log(fruits);
 
