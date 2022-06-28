@@ -139,36 +139,3 @@ console.log(myMap.get("a string"));
 console.log(myMap.get(keyObj)); //  correct
 console.log(myMap.get({})); //  undefined   because keyObj !== {}  as DIFFERENT REFERENCE OF THE OBJECT in the Memory
 console.log(myMap.get(function () {})); // undefined, because keyFunc !== function () {}
-
-var map1 = new Map();
-map1.set("0", "zero");
-map1.set(1, "one");
-map1.set(2, "two");
-
-//  -------------         Map Iteration        -----------------
-for (const key of map1.keys()) {
-  //  .values()
-  console.log(key); //  0  1  2
-}
-
-for (const [key, value] of map1.entries()) {
-  console.log(key + " = " + value);
-}
-
-map1.forEach(function (value, key) {
-  console.log(key + " = " + value);
-});
-
-const hashMap = new Map([
-  ["01", "C++"],
-  ["02", "C"],
-  ["03", "Javascript"],
-]);
-
-hashMap.set("04", "Java");
-
-for (const [key, value] of hashMap.entries()) {
-  console.log(key, " --> ", value);
-}
-
-console.log(hashMap.has("02"));

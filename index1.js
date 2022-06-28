@@ -50,11 +50,25 @@ c.greeting = "Hello";
 console.log(d.greeting); // Hello
  */
 
-var c = 21;
+/* var c = 21;
 var girl = function () {
   console.log(c);
   var c = 20;
 };
-girl();
+girl(); */
 
 //  Output : undefined
+
+/* for (var i = 1; i <= 2; i++) {
+  (function (i) {
+    setTimeout(function () {
+      console.log(i);
+    }, 1000);
+  })(i);
+} */
+
+/* for (let i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i);
+  }, i * 1000);
+} */

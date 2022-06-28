@@ -145,7 +145,7 @@ function foo2() {
   }
 }
 
-//   -------    SNIPPET - 6   -----------
+//   -------    SNIPPET - 7   -----------
 //  Outer Function
 function x() {
   var a = 200,
@@ -165,3 +165,48 @@ console.log(closure);
 closure();
 
 // x()();   // call inenr func
+
+//   -------    SNIPPET - 8 [NOTATIONS]   -----------
+// Function Statement aka Function Declaration
+function a() {
+  console.log("Hello");
+}
+a();
+
+// Function Expression
+var b = function () {
+  console.log("Hello");
+};
+b();
+
+// Named Function
+var c = function abc() {
+  console.log("Named Function");
+};
+
+c();
+
+//  First Class Function
+// If functions is treated like other variables.So the functions can be assigned to any other variable OR PASSED AS AN ARGUEMENT & RETURNED by another function.
+var d = function (param) {
+  return function abc(param) {
+    var xp = 01;
+    console.log(param + xp);
+  };
+};
+
+console.log(d("Dev"));
+
+//   -------    SNIPPET - 9   -----------
+setTimeout(() => {
+  console.log("inside Timer");
+}, [5000]);
+
+function x(y) {
+  console.log("Inside X");
+  y();
+}
+
+x(function y() {
+  console.log("Y");
+});
