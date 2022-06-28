@@ -72,3 +72,19 @@ girl(); */
     console.log(i);
   }, i * 1000);
 } */
+
+const names = ["ali", "hamza", "jack"];
+
+function display(x, idx, arr) {
+  console.log(x, idx, arr);
+}
+// names.forEach(display);
+
+Array.prototype.ourForEach = function (callBack) {
+  for (let i = 0; i < this.length; i++) {
+    callBack(this[i], i, this);
+  }
+};
+
+//  this refers to names array , callBack func refers to the display func.
+names.ourForEach(display);
