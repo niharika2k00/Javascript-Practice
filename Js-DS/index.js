@@ -106,6 +106,9 @@ num.filter((val, idx, arr) => {
 });
 // =======================================================================
 
+var arr = [1, 2, 3];
+console.log([...arr, 5]); // append element that doesn't change the original array
+
 //   slice ()  :   array.slice(start, end)         exclusive END.
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
 console.log(fruits.slice(-3, -1));
