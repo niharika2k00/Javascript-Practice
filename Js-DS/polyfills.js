@@ -1,18 +1,53 @@
-const names = ["Charles", "Lucifer", "Harry", "Jack"];
+const arr = ["Charles", "Lucifer", "Harry", "Jack"];
 
+// (val , idx , arr)
 function display(x, idx, arr) {
   console.log(x, idx, arr);
 }
 
-Array.prototype.ourForEach = function (callBack) {
+// _________________________________________________________
+//                  FOR EACH LOOP  Polyfill
+// _________________________________________________________
+Array.prototype.customForEach = function (callBack) {
   for (let i = 0; i < this.length; i++) {
     callBack(this[i], i, this);
   }
 };
 
-//  this refers to names array , callBack func refers to the display func.
-names.ourForEach(display);
-// names.forEach(display);     // In Build
+//  this refers to arr array , callBack func refers to the display func.
+arr.customForEach(display);
+// arr.forEach(display);     // In Build
+
+// _________________________________________________________
+//                  FILTER Polyfill
+// _________________________________________________________
+Array.prototype.customFilter = function (callBack) {
+  for (let i = 0; i < this.length; i++) {
+    if (this[i].length > 5) callBack(this[i], i);
+  }
+};
+
+arr.customFilter(display);
+
+// _________________________________________________________
+//                     MAP Polyfill   (store in arr and return)
+// _________________________________________________________
+var numArr = [1, 2, 3, 4];
+
+var display1 = (ele) => {
+  return ele * ele;
+};
+
+Array.prototype.customMap = function (callBack) {
+  const res = [];
+  for (let i = 0; i < this.length; i++) {
+    res.push(display1(this[i]));
+  }
+
+  return res;
+};
+
+console.log(numArr.customMap(display1));
 
 // https://medium.com/nerd-for-tech/polyfill-for-array-map-filter-and-reduce-e3e637e0d73b
 // https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
