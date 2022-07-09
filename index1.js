@@ -8,7 +8,7 @@ console.log(aa);
 // console.log(message); // undefined
 // message = "The variable Has been hoisted";
 
-/* let b = 10; // created in the script scope
+let b = 10; // created in the script scope
 {
   var a = 100;
   let b = 45; // created in the Block scope
@@ -17,9 +17,9 @@ console.log(aa);
   console.log(a);
   console.log(b);
   console.log(c);
-} 
+}
 
-console.log("Outer ", b); */
+console.log("Outer ", b);
 
 /* function z() {
   var b = 1000;
@@ -73,26 +73,10 @@ girl(); */
   }, i * 1000);
 } */
 
-const names = ["ali", "hamza", "jack"];
-
-function display(x, idx, arr) {
-  console.log(x, idx, arr);
-}
-// names.forEach(display);
-
-Array.prototype.ourForEach = function (callBack) {
-  for (let i = 0; i < this.length; i++) {
-    callBack(this[i], i, this);
-  }
-};
-
-//  this refers to names array , callBack func refers to the display func.
-names.ourForEach(display);
-
-function aa() {
+/* function aa() {
   return (() => 0)();
 }
-console.log(aa());
+console.log(aa()); */
 
 /* background-image: linear-gradient(rgba(0, 0, 0, 0.882), rgba(0, 0, 0, 0.886)), url(./images/Cse.jpg);
 

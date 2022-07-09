@@ -49,7 +49,31 @@ Array.prototype.customMap = function (callBack) {
 
 console.log(numArr.customMap(display1));
 
+// _________________________________________________________
+//                  REDUCE  Polyfill
+// _________________________________________________________
+
+//  (total , curr , idx , arr)
+var add = (accumulator, currVal, idx, arr) => {
+  accumulator += currVal;
+  return accumulator;
+};
+
+Array.prototype.customReduce = function (callBack, initialValue) {
+  var accumulator = initialValue;
+
+  for (let i = 0; i < this.length; i++) {
+    accumulator = callBack(accumulator, this[i], i, this);
+  }
+
+  console.log(accumulator);
+};
+
+arr.customReduce(add, 0);
+
 // https://medium.com/nerd-for-tech/polyfill-for-array-map-filter-and-reduce-e3e637e0d73b
 // https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
 // https://akashjain993.medium.com/js-polyfills-interview-questions-cb431f3c98dd
 // https://dev.to/abhishekraj272/js-polyfills-asked-in-interviews-19b3
+
+// https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
