@@ -25,7 +25,7 @@ function a() {
   }
 }
 
-a();
+a(); // function invocation
 
 //  Output : 1 3
 
@@ -63,7 +63,7 @@ for (let i = 0; i < 3; i++) {
 }
 //  Output :    1 2 3
 
-//   -------    SNIPPET - 4   -----------
+//   -------    SNIPPET - 4   ( IIFE )  -----------
 // IIFE (IMMEDIATELY INVOKED FUNCTION EXPRESSION)
 (function () {
   var a = (b = 42);
@@ -183,7 +183,6 @@ b();
 var c = function abc() {
   console.log("Named Function");
 };
-
 c();
 
 //  First Class Function
@@ -210,3 +209,30 @@ function x(y) {
 x(function y() {
   console.log("Y");
 });
+
+//   -------    SNIPPET - 10   -----------
+// Const --> Block scope
+// Let  -->  Script scope
+var b = 10;
+{
+  let a = 100;
+  var b = 45;
+  const c = 78;
+
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+
+console.log("Outer ", b);
+console.log("Inner ", a);
+
+//   -------    SNIPPET - 11   -----------
+var c = 21;
+var girl = function () {
+  console.log(c); // undefined
+  var c = 20;
+};
+girl();
+
+// Output : undefined
