@@ -198,7 +198,7 @@ console.log(d("Dev"));
 
 //   -------    SNIPPET - 9   -----------
 setTimeout(() => {
-  console.log("inside Timer");
+  console.log("Inside Timer");
 }, [5000]);
 
 function x(y) {
@@ -209,6 +209,12 @@ function x(y) {
 x(function y() {
   console.log("Y");
 });
+
+/* 
+    Inside X
+    Y
+    Inside Timer
+*/
 
 //   -------    SNIPPET - 10   -----------
 // Const --> Block scope
@@ -236,3 +242,33 @@ var girl = function () {
 girl();
 
 // Output : undefined
+
+//   -------    SNIPPET - 12   -----------
+//  Using REDUCE func(), display the name of the characters whose age < 30.
+//  [ ] initial value in syntax.
+const users = [
+  {
+    name: "Oswald",
+    age: 24,
+  },
+  {
+    name: "Henry",
+    age: 32,
+  },
+  {
+    name: "Daisy",
+    age: 14,
+  },
+  {
+    name: "Johnny",
+    age: 51,
+  },
+];
+
+const result = users.reduce((acc, currValue) => {
+  if (currValue.age < 30) acc.push(currValue.name);
+
+  return acc;
+}, []);
+
+console.log("Result : ", result);

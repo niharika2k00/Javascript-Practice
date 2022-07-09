@@ -1,3 +1,16 @@
+/*             List of Polyfills 
+            ------------------------
+
+    1) For Each
+    2) Filter  
+    3) Map 
+    4) Reduce 
+    5) Bind 
+    6) SetTimeOut
+    7) SetInterval 
+
+*/
+
 const arr = ["Charles", "Lucifer", "Harry", "Jack"];
 
 // (val , idx , arr)
@@ -65,15 +78,19 @@ Array.prototype.customReduce = function (callBack, initialValue) {
   for (let i = 0; i < this.length; i++) {
     accumulator = callBack(accumulator, this[i], i, this);
   }
-
-  console.log(accumulator);
+  return accumulator;
 };
 
-arr.customReduce(add, 0);
+console.log(arr.customReduce(add, 0));
 
-// https://medium.com/nerd-for-tech/polyfill-for-array-map-filter-and-reduce-e3e637e0d73b
-// https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
-// https://akashjain993.medium.com/js-polyfills-interview-questions-cb431f3c98dd
+// _________________________________________________________
+//                  BIND  Polyfill
+// _________________________________________________________
+asdfaf;
+
+// _________________________________________________________
+//                  SET-TIME-OUT  Polyfill
+// _________________________________________________________
+
 // https://dev.to/abhishekraj272/js-polyfills-asked-in-interviews-19b3
-
 // https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13

@@ -23,16 +23,3 @@ console.log(aa()); */
 .table-row:nth-child(even) {
   background: rgba(238, 238, 238, 0.116);
 } */
-
-setTimeout(() => {
-  console.log("inside Timer");
-}, [500]);
-
-function x(y) {
-  console.log("Inside X");
-  y();
-}
-
-x(function y() {
-  console.log("Y");
-});
