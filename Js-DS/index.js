@@ -51,18 +51,18 @@ A();
 // console.log("Value of variable B : ", B);   // ReferenceError: B is not defined
 
 // -----------------------------------------------
-//               CALLBACK  FUNCTION
+//               CALLBACK  FUNCTION     -->      A callback is a function passed as an argument to another function.
 // -----------------------------------------------
-function callbackFunction(name) {
-  console.log("Hello " + name);
+function callbackFunction(prev, name) {
+  console.log("Hello " + prev + " " + name);
 }
 
-function outerFunction(callback) {
+function outerFunction(prev, callback) {
   let name = "Niharika";
-  callback(name);
+  callback(prev, name);
 }
 
-outerFunction(callbackFunction);
+outerFunction("Miss", callbackFunction); //  Hello Miss Niharika
 
 // ------------------------------------
 //               STRINGS
@@ -78,7 +78,7 @@ str.slice(7) | OR | str.slice(-12); //  Banana, Kiwi
 str.substring(7, 13); //  Banana     [exclusive END]
 
 // ------------------------------------
-//               ARRAY
+//               ARRAY        https://www.w3schools.com/js/js_array_iteration.asp
 // ------------------------------------
 
 //  ==================          ITERATION              =================
