@@ -43,7 +43,7 @@ Array.prototype.customFilter = function (callBack) {
 arr.customFilter(display);
 
 // _________________________________________________________
-//                     MAP Polyfill   (store in arr and return)
+//                   MAP Polyfill   (store in arr and return)
 // _________________________________________________________
 var numArr = [1, 2, 3, 4];
 

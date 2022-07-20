@@ -78,10 +78,8 @@ str.slice(7) | OR | str.slice(-12); //  Banana, Kiwi
 str.substring(7, 13); //  Banana     [exclusive END]
 
 // ------------------------------------
-//               ARRAY        https://www.w3schools.com/js/js_array_iteration.asp
+//               ARRAY  ITERATION      https://www.w3schools.com/js/js_array_iteration.asp
 // ------------------------------------
-
-//  ==================          ITERATION              =================
 //   every ()  :  array.every(function(currentValue, index, arr), thisValue)
 var num = [2, 45, -100, 96, -32];
 console.log("Result of every()  =>  ", num.every(allPositive)); //  false
