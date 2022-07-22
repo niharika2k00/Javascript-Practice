@@ -273,14 +273,11 @@ const result = users.reduce((acc, currValue) => {
 
 console.log("Result : ", result);
 
-//   -------    SNIPPET - 13   -----------
+//   -------    SNIPPET - 13   [Obj.freeze()  make the properties immutable]  -----------
 const obj = {
   prop: 42,
 };
-
 Object.freeze(obj);
-
-obj.prop = 33;
-// Throws an error in strict mode
-
+obj.prop = 33; // Throws an error in strict mode
 console.log(obj.prop); // expected output: 42
+
