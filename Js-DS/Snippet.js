@@ -102,6 +102,11 @@ undefined
   Whereas variable b is not declared in function scope so by default its being declared in the GLOBAL EXECUTION Context.
  */
 
+function aa() {
+  return (() => 0)();
+}
+console.log(aa()); // 0
+
 //   -------    SNIPPET - 5   -----------
 for (var i = 0; i < 5; i++) {
   setTimeout(function () {
@@ -281,3 +286,37 @@ Object.freeze(obj);
 obj.prop = 33; // Throws an error in strict mode
 console.log(obj.prop); // expected output: 42
 
+//   -------    SNIPPET - 14   -----------
+console.log("Before");
+
+setTimeout(() => {
+  console.log("Inside SetTimeOut");
+}, 0);
+
+console.log("After");
+
+/* 
+Before
+Inside SetTimeOut
+After
+
+-----   This is bcz once the parser enters into the setTimeOut snippet, it will put into MacroTask Queue/CallBack Queue.
+And once the CALLSTACK of Global Execution Context will empty Event Loop will send the setTimeOut operation into the CallStack.
+*/
+
+//   -------    SNIPPET - 15   [Higher Order Function]    -----------
+var radiusArr = [1, 2, 3, 4];
+
+function Area(radius) {
+  return (Math.PI * radius * radius).toFixed(2); // Pi * r * r
+}
+
+var calculate = function (radiusArr, Operation) {
+  var res = [];
+  var len = radiusArr.length;
+  for (var i = 0; i < len; i++) res.push(Operation(radiusArr[i])); //  Area(radiusArr[i])
+
+  return res;
+};
+
+console.log(calculate(radiusArr, Area)); // Higher Order Function
