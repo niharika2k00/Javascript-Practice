@@ -54,7 +54,7 @@ var display1 = (ele) => {
 Array.prototype.customMap = function (callBack) {
   const res = [];
   for (let i = 0; i < this.length; i++) {
-    res.push(display1(this[i]));
+    res.push(callBack(this[i]));
   }
 
   return res;

@@ -9,9 +9,9 @@ else console.log("false");
 //   Null  check returns False
 null ? console.log("true") : console.log("false");
 
-// ------------------------------------
+// -----------------------------------------------------------
 //               HOISTING
-// ------------------------------------
+// -----------------------------------------------------------
 console.log(name);
 console.log("say 123");
 var name = "Helloooooo  : )";
@@ -50,9 +50,9 @@ function A() {
 A();
 // console.log("Value of variable B : ", B);   // ReferenceError: B is not defined
 
-// -----------------------------------------------
+// ----------------------------------------------------------------------
 //               CALLBACK  FUNCTION     -->      A callback is a function passed as an argument to another function.
-// -----------------------------------------------
+// ----------------------------------------------------------------------
 function callbackFunction(prev, name) {
   console.log("Hello " + prev + " " + name);
 }
@@ -64,9 +64,9 @@ function outerFunction(prev, callback) {
 
 outerFunction("Miss", callbackFunction); //  Hello Miss Niharika
 
-// ------------------------------------
+// -----------------------------------------------------------
 //               STRINGS
-// ------------------------------------
+// -----------------------------------------------------------
 // slice(start, end)
 // substring(start, end)
 // substr(start, length)
@@ -77,9 +77,9 @@ let str = "Apple, Banana, Kiwi";
 str.slice(7) | OR | str.slice(-12); //  Banana, Kiwi
 str.substring(7, 13); //  Banana     [exclusive END]
 
-// ------------------------------------
+// -----------------------------------------------------------
 //               ARRAY  ITERATION      https://www.w3schools.com/js/js_array_iteration.asp
-// ------------------------------------
+// -----------------------------------------------------------
 //   every ()  :  array.every(function(currentValue, index, arr), thisValue)
 var num = [2, 45, -100, 96, -32];
 console.log("Result of every()  =>  ", num.every(allPositive)); //  false
@@ -124,7 +124,7 @@ console.table(prep);
 
 //   fill ()  :   array.fill(value, start, end)
 /* 
-    -  Overwrite the Original Array 
+    -  Overwrite the Original Array a
     -  Replace the Element
 */
 fruits = ["Banana", "Orange", "Apple", "Mango"];
@@ -132,9 +132,9 @@ fruits.fill("Kiwi");
 fruits.fill("Kiwi", 0, 1);
 console.log(fruits);
 
-// ------------------------------------
+// -----------------------------------------------------------
 //               MAP
-// ------------------------------------
+// -----------------------------------------------------------
 console.log("\n\n\n  MAP PART ");
 const myMap = new Map();
 

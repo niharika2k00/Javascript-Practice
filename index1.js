@@ -18,3 +18,40 @@ console.log(d.greeting); // Hello
   background: rgba(238, 238, 238, 0.116);
 } */
 
+/* const obj = {
+  fname: "Niharika",
+  lname: "Dutta",
+};
+
+var display = function () {
+  console.log("Firstname =  " + this.fname + "\tLastname  =  " + this.lname);
+};
+
+var res = display.bind(obj); //  return func
+res();
+
+Function.prototype.customBind = function (obj) {
+  for (var i = 0; i < obj.length; i++) {}
+};
+
+var res1 = display.customBind(obj); //  return func
+res1();
+ */
+
+const person1 = {
+  fname: "Niharika",
+  lname: "Dutta",
+};
+
+const person2 = {
+  fname: "Teddy",
+  lname: "Henfrey",
+};
+
+var display = function (place) {
+  console.log("Name =  " + this.fname + " " + this.lname, "in", place);
+};
+
+// func.call()  =>  1st parameter refers to the object[this], then rest refers as variables.
+display.call(person1, "Denmark");
+display.call(person2);
