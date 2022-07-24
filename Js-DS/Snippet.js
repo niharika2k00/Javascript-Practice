@@ -320,3 +320,23 @@ var calculate = function (radiusArr, Operation) {
 };
 
 console.log(calculate(radiusArr, Area)); // Higher Order Function
+
+//   -------    SNIPPET - 16   -----------
+const obj = {
+  name: "John",
+  mystry: function () {
+    const nestedObj = {
+      name: "Fizz",
+      logName: () => {
+        console.log(this.name);
+      },
+    };
+
+    nestedObj.logName();
+  },
+};
+
+obj.mystry(); //  John
+/*      Bcz arrow function takes the "this" scope of parent.
+  If its function() {...}  then it would have been Fizz.
+ */

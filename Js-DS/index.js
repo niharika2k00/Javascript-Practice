@@ -74,7 +74,7 @@ outerFunction("Miss", callbackFunction); //  Hello Miss Niharika
 
 let str = "Apple, Banana, Kiwi";
 
-str.slice(7) | OR | str.slice(-12); //  Banana, Kiwi
+// str.slice(7) | OR | str.slice(-12); //  Banana, Kiwi
 str.substring(7, 13); //  Banana     [exclusive END]
 
 // -----------------------------------------------------------
@@ -131,6 +131,65 @@ fruits = ["Banana", "Orange", "Apple", "Mango"];
 fruits.fill("Kiwi");
 fruits.fill("Kiwi", 0, 1);
 console.log(fruits);
+
+// -----------------------------------------------------------
+//                CALL() , APPLY() , BIND()   METHOD        https://www.w3schools.com/js/js_function_bind.asp
+// ----------------------------------------------------------
+const person1 = {
+  fname: "Niharika",
+  lname: "Dutta",
+};
+
+const person2 = {
+  fname: "Teddy",
+  lname: "Henfrey",
+};
+
+var display = function (place, method) {
+  console.log("Name =  " + this.fname + " " + this.lname, "in", place + ": Method @", method);
+};
+
+// func.call()  =>  1st parameter refers to the object[this], then rest refers as variables.
+display.call(person1, "Denmark", "all()");
+display.call(person2);
+
+display.apply(person2, ["Copenhagen", "apply()"]);
+
+//  Bind => doesnt invoke the method directly, but it returns a copy of the function.
+let res = display.bind(person2, "Greenland", "bind");
+res();
+
+// -----------------------------------------------------------
+//                      CURRYING FUNCTION
+// -----------------------------------------------------------
+//  Example : 1
+var add = function (x, y) {
+  console.log(x + y);
+};
+
+let result = add.bind(this, 2);
+result(3);
+console.log(result);
+
+/* 
+      After (this) :
+  add becomes function(2 , y){
+    console.log(2 + y);
+  }    
+   and this above function is returned.
+
+  Line Next :     result(3)
+*/
+
+//  Example : 2
+const addCurry = (a) => {
+  return (b) => {
+    return (c) => {
+      return a + b + c;
+    };
+  };
+};
+console.log(addCurry(2)(3)(5)); //  10
 
 // -----------------------------------------------------------
 //               MAP
