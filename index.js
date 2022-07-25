@@ -94,3 +94,12 @@ const changeSelect = (selectOption) => {
   var value = selectOption.value;
   console.log(value);
 };
+
+/* 
+
+      var myImage = new Image(10, 10);
+      myImage.src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg";
+      // document.body.appendChild(myImage);
+      document.getElementById("main").appendChild(myImage);
+
+*/
