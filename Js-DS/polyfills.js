@@ -93,21 +93,34 @@ asdfaf;
 // _________________________________________________________
 // requestIdleCallback will wait for the main thread to be idle before executing the callback.
 
-function customSetTimeOut(callback, delay) {
+function customSetTimeOut(callBack, delay) {
   var startTime = Date.now();
 
   function check() {
     if (Date.now() > startTime + delay) {
-      callback();
+      callBack();
     } else requestIdleCallback(check);
   }
   requestIdleCallback(check);
 }
 
 customSetTimeOut(() => {
-  console.log("callback func inside setTimeOut executed");
+  console.log("CallBack func inside setTimeOut executed");
+}, 2000);
+
+// _________________________________________________________
+//                  SET-TINTERVAL  Polyfill
+// _________________________________________________________
+function customSetInterval(callBack, time) {
+  callBack();
+
+  setTimeout(callBack, time);
+}
+
+customSetInterval(() => {
+  console.log("Inside SetInterval !");
 }, 2000);
 
 // https://dev.to/abhishekraj272/js-polyfills-asked-in-interviews-19b3
 // https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
-https://medium.com/clarusway/making-a-todo-list-with-html-css-and-javascript-154839b770b6
+// https://medium.com/clarusway/making-a-todo-list-with-html-css-and-javascript-154839b770b6
