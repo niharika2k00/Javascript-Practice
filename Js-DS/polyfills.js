@@ -81,7 +81,7 @@ Array.prototype.customReduce = function (callBack, initialValue) {
   return accumulator;
 };
 
-console.log(arr.customReduce(add, 0));
+console.log(numArr.customReduce(add, 0));
 
 // _________________________________________________________
 //                  BIND  Polyfill
@@ -91,80 +91,23 @@ asdfaf;
 // _________________________________________________________
 //                  SET-TIME-OUT  Polyfill
 // _________________________________________________________
+// requestIdleCallback will wait for the main thread to be idle before executing the callback.
+
+function customSetTimeOut(callback, delay) {
+  var startTime = Date.now();
+
+  function check() {
+    if (Date.now() > startTime + delay) {
+      callback();
+    } else requestIdleCallback(check);
+  }
+  requestIdleCallback(check);
+}
+
+customSetTimeOut(() => {
+  console.log("callback func inside setTimeOut executed");
+}, 2000);
 
 // https://dev.to/abhishekraj272/js-polyfills-asked-in-interviews-19b3
 // https://dev.to/umerjaved178/polyfills-for-foreach-map-filter-reduce-in-javascript-1h13
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!--   CSS   -->
-    <link rel="stylesheet" href="style.css" />
-
-    <!-- <style>
-      h1 {
-        color: blue;
-      }
-    </style> -->
-
-    <title>Js Practice</title>
-  </head>
-
-  <body>
-    <div>
-      <h1>Welcome to the Javascript World.</h1>
-
-      <div>
-        <div class="container">
-          <div class="default box1">1</div>
-          <div class="default box2" style="background-color: #fcbf49">2</div>
-          <div class="default box3">3</div>
-          <div class="default box4">4</div>
-        </div>
-
-        <div class="effector">Discoo Effect</div>
-      </div>
-
-      <form id="frm1" action="/action_page.php">
-        <label for="fname">First name:</label><br />
-        <input type="text" id="fname" name="fname" value="John" /><br />
-
-        <label for="lname">Last name:</label><br />
-        <input type="text" id="lname" name="lname" value="Doe" />
-      </form>
-
-      <br />
-      <br />
-      Type Your Name -->
-      <form><input type="text" id="input" name="name" /><br /></form>
-      <p id="display"></p>
-
-      <div style="margin: 2rem; align-items: centear; justify-content: center; text-align: center">
-        <button type="button" onclick="clickFunc()">Click Me!</button>
-      </div>
-
-      <!--      Dropdown             Inline OnChange  -->
-      <select onchange="changeSelect(this)">
-        <option value="1">Text 1</option>
-        <option value="2">Text 2</option>
-      </select>
-    </div>
-
-    <!--   JAVASCRIPT   -->
-    <script type="text/javascript" src="index1.js"></script>
-
-    <!--  <script>
-      console.log("Welcome ! ");
-      document.querySelector(".box2").style.backgroundColor = "deeppink";
-    </script> -->
-  </body>
-</html>
+https://medium.com/clarusway/making-a-todo-list-with-html-css-and-javascript-154839b770b6
