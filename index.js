@@ -12,7 +12,24 @@ var inputBox = document.querySelector("#input");
 let numberOfChildren = BoxMainDiv.childElementCount;
 console.log("Number of Children inside the main box div ==> ", numberOfChildren); //  OR  .children.length
 
-console.log("Classname extracted using func ==> ", effectBox.className);
+console.log(
+  "Current Node  => ",
+  effectBox.nodeName,
+  "ParentNode => ",
+  effectBox.parentNode,
+  "Classname extracted using func ==> ",
+  effectBox.className
+);
+
+console.log("Child Nodes of Body => ", document.body.childNodes); // tagName, nodeName used to get the value of the NODE.
+
+/* 
+let text = "";
+for (let i = 0; i < collection.length; i++) {
+  text += collection[i].tagName + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+*/
 
 // textContent()
 
@@ -101,6 +118,10 @@ const changeSelect = (selectOption) => {
   var value = selectOption.value;
   console.log(value);
 };
+
+function myFunction() {
+  document.getElementById("myCheck").click();
+}
 
 /* 
 
