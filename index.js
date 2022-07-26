@@ -34,7 +34,7 @@ console.log("Color: " + color);
 
 var toggle = (clickedElement, text) => {
   console.log("Initial ", text);
-  0;
+
   if (text === "Yeah !") clickedElement.innerHTML = text;
   else clickedElement.innerHTML = "Yeah !";
 
@@ -78,7 +78,7 @@ inputBox.addEventListener("keyup", function (e) {
 
   // content = document.createTextNode(e.target.value);
   // HTag.appendChild(content);
-  // display.appendChild(HTag);
+  // display.appendChild(HTag); // Append a NODE as its Child
 });
 
 //  Inline ONCHANGE is also applicable.
