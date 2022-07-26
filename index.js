@@ -1,13 +1,20 @@
 console.log("Welcome to the Javascript World.");
 
+const BoxMainDiv = document.getElementById("container");
 var box1 = document.querySelector(".box1");
 var box2 = document.querySelector(".box2");
 var box3 = document.querySelector(".box3");
 var box4 = document.querySelector(".box4");
 
 var effectBox = document.querySelector(".effector");
-
 var inputBox = document.querySelector("#input");
+
+let numberOfChildren = BoxMainDiv.childElementCount;
+console.log("Number of Children inside the main box div ==> ", numberOfChildren); //  OR  .children.length
+
+console.log("Classname extracted using func ==> ", effectBox.className);
+
+// textContent()
 
 // document.querySelector(".box2").style.backgroundColor = "deeppink";
 // console.log(window.getComputedStyle(box2).backgroundColor);
@@ -101,5 +108,10 @@ const changeSelect = (selectOption) => {
       myImage.src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg";
       // document.body.appendChild(myImage);
       document.getElementById("main").appendChild(myImage);
+
+    Difference between Element VS Node :    https://www.w3schools.com/jsref/prop_node_parentelement.asp
+
+
+
 
 */

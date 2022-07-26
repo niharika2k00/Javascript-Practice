@@ -6,10 +6,10 @@ const outerUl = document.querySelector(".outerUl");
 const addButton = document.querySelector(".addButton");
 
 var list = [];
-var value;
+let value;
 
 textArea.addEventListener("keyup", (e) => {
-  console.log(e.target.value);
+  // console.log(e.target.value);
   value = textArea.value;
 });
 
@@ -25,8 +25,13 @@ var addHandler = () => {
   console.log("Modified array => ", list);
 
   var li = document.createElement("li");
-  li.innerText = value;
+  var textNode = document.createElement("text"); // Inline text
+  textNode.style.cssText += "font-size : 1.2rem;";
+  li.setAttribute("class", "listStyle");
+  textNode.innerText = value;
+  li.appendChild(textNode);
 
+  // ul > li > span > X
   var span = document.createElement("span");
   var cross = document.createTextNode("X");
   span.appendChild(cross); // <span> X </span>
@@ -43,7 +48,7 @@ var addHandler = () => {
 
 //  @Check (Complete) Mechanism
 outerUl.addEventListener("click", function (e) {
-  if (e.target.tagName === "LI") {
+  if (e.target.tagName === "TEXT") {
     e.target.classList.toggle("addCheck");
   }
 });

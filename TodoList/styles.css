@@ -16,10 +16,15 @@
     padding: 1rem;
 }
 
-
 #textArea {
     width: 13rem;
     height: 1.5rem;
+}
+
+.listStyle {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.4rem;
 }
 
 .addCheck {
@@ -29,8 +34,10 @@
 
 .deleteBtn {
     color: red;
+    background-color: rgb(255, 255, 124);
+    padding: 0.2rem;
     font-weight: bold;
-    margin-left: 1rem;
+    margin-left: 0.1rem;
     display: inline-flex;
     justify-content: end;
 }
