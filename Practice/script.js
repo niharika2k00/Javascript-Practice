@@ -1,14 +1,21 @@
 console.log("Js Connected");
 
-var getDimension = (event) => {
-  var image = document.getElementById("output");
-  image.src = URL.createObjectURL(event.target.files[0]);
+var mainDiv = document.querySelector(".puzzle");
+var localImg = document.getElementById("display");
 
-  console.log(image.width, image.height); // original dimensions
-  console.log(image);
+let uploadedImgURL;
 
-  image.style.height = "500px";
-  image.style.width = "500px";
+var getDimension = (e) => {
+  //   console.log(e.target.files);
+
+  localImg.src = uploadedImgURL = URL.createObjectURL(e.target.files[0]);
+  console.log(localImg.width, localImg.height); // original dimensions
+
+  localImg.style.height = "300px";
+  localImg.style.width = "540px";
+  localImg.setAttribute("class", "originalImgCss");
+
+  console.log(uploadedImgURL);
 };
 
 /* 
@@ -22,21 +29,31 @@ context.drawImage(img, sx, sy, clipWidth, clipHeight, x, y, width, height);
 
 */
 
+var defaultImgEle = document.getElementById("pic");
 var ctx = document.getElementById("myCanvas").getContext("2d");
-ctx.drawImage(document.getElementById("pic"), 0, 0, 100, 100);
+ctx.drawImage(defaultImgEle, 0, 0, 100, 100);
+defaultImgEle.setAttribute("class", "originalImgCss");
 
-var image = new Image(); // img tag creation
-image.onload = SplitImage;
-image.src = "https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
-image.crossOrigin = "anonymous";
+var image = new Image();
 
-function SplitImage() {
-  var widthOfOnePiece = 100,
-    heightOfOnePiece = 100,
-    numColsToCut = 3,
-    numRowsToCut = 3;
+//  Function for generating N pieces
+var generatePuzzleHandler = () => {
+  console.log("Image Processing...");
 
-  var imagePieces = [];
+  image.crossOrigin = "anonymous";
+  image.setAttribute("class", "originalImg");
+  // image.src = "https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";  // HardCoded Image
+  image.src = uploadedImgURL;
+  image.onload = splitImage;
+};
+
+function splitImage() {
+  var widthOfOnePiece = 200,
+    heightOfOnePiece = 200,
+    numColsToCut = 2,
+    numRowsToCut = 2;
+
+  var imagePiecesArr = [];
 
   for (var x = 0; x < numColsToCut; x++) {
     for (var y = 0; y < numRowsToCut; y++) {
@@ -56,21 +73,18 @@ function SplitImage() {
         canvas.height
       );
 
-      imagePieces.push(canvas.toDataURL());
+      imagePiecesArr.push(canvas.toDataURL());
     }
   }
 
-  console.log(imagePieces);
+  console.log(imagePiecesArr);
 
-  var mainDiv = document.querySelector(".puzzle");
-
-  for (var i = 0; i < imagePieces.length; i++) {
+  for (var i = 0; i < imagePiecesArr.length; i++) {
     var newImgTag = new Image();
-    newImgTag.src = imagePieces[i];
+    newImgTag.src = imagePiecesArr[i];
     // console.log(newImgTag);
 
     newImgTag.setAttribute("class", "imgPieceStyle");
-
     mainDiv.appendChild(newImgTag);
   }
 }

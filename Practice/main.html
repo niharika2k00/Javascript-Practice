@@ -13,18 +13,30 @@
 
   <body>
     <div>
-      <h1>Image Splitting !!</h1>
+      <h1 style="text-align: center">Image Splitting !!</h1>
 
       <div>
-        <label for="img">Select Local Image:</label> <br />
-        <input type="file" id="img" name="img" accept="image/*" onchange="getDimension(event)" />
+        <div class="part1">
+          <img
+            id="pic"
+            width="40%"
+            height="60%"
+            src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          />
+        </div>
 
-        <img
-          id="pic"
-          src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        />
+        <div style="margin-bottom: 2rem">
+          Display in Canvas :
+          <canvas id="myCanvas" style="border: 3px solid #ff168e"> </canvas>
+        </div>
 
-        <canvas id="myCanvas" style="border: 3px solid #ff168e"> </canvas>
+        <div class="part2">
+          <h3>Select and Upload Local Image:</h3>
+          <input type="file" id="img" name="img" accept="image/*" onchange="getDimension(event)" />
+          <img id="display" />
+
+          <button class="generateBtn" type="text" onclick="generatePuzzleHandler()">Generate</button>
+        </div>
 
         <div class="puzzle"></div>
       </div>
