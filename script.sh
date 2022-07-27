@@ -15,6 +15,6 @@ git commit -m "$commitMessage"
 git push origin main
 
 
-#  -n  remove new line
+#  -n   remove new line
 
 
