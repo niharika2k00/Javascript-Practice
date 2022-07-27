@@ -56,7 +56,20 @@
         <option value="2">Text 2</option>
       </select>
 
-      <input type="checkbox" id="myCheck" onmouseover="myFunction()" />
+      <details id="myDetails">
+        <summary>On mouseover the checkbox will be clicked.</summary>
+        <p>.................Check once</p>
+      </details>
+      <input type="checkbox" id="myCheck" onmouseover="clickEventTrigger()" />
+
+      <br />
+      <br />
+      <button onclick="removeFirstFunc()">Remove First Child</button>
+      <ul id="list">
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+      </ul>
     </div>
 
     <!--   JAVASCRIPT   -->

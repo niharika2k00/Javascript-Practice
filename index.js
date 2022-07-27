@@ -21,7 +21,7 @@ console.log(
   effectBox.className
 );
 
-console.log("Child Nodes of Body => ", document.body.childNodes); // tagName, nodeName used to get the value of the NODE.
+console.log("Child Nodes of Body => ", document.body.childNodes); //  OR  .children        tagName, nodeName used to get the value of the NODE like DIV SPAN LI UL.
 
 /* 
 let text = "";
@@ -119,9 +119,21 @@ const changeSelect = (selectOption) => {
   console.log(value);
 };
 
-function myFunction() {
+function clickEventTrigger() {
   document.getElementById("myCheck").click();
 }
+
+//  Remove Nodes  +  Child Node Functionality
+function removeFirstFunc() {
+  var list = document.getElementById("list");
+  if (list.hasChildNodes()) {
+    // list.children[0].remove();
+    // list.removeChild(list.children[0]);
+    list.removeChild(list.firstElementChild);
+  }
+}
+
+console.log();
 
 /* 
 
