@@ -1,8 +1,8 @@
 console.log("Welcome to the Javascript World.");
 
-// var message;
-// console.log(message); // undefined
-// message = "The variable Has been hoisted";
+var message;
+console.log(message); // undefined
+message = "The variable Has been hoisted";
 
 // In JavaScript, all objects interact by REFERENCE when setting them equal to each other.
 let c = { greeting: "Hey!" };
@@ -47,7 +47,7 @@ const parent = {
 
 console.log(parent.mother());
 
-const cart = ["dress", "shoes", "laptop", "softtoy"];
+// const cart = ["dress", "shoes", "laptop", "softtoy"];
 
 // //  passing a func[risky DND] that depends on other func passed in CallBack
 // createOrder(cart, function (orderId) {
@@ -78,7 +78,7 @@ const cart = ["dress", "shoes", "laptop", "softtoy"];
 
 // -----------------------------------------
 
-var id = "demo@6";
+/* var id = "demo@6";
 const promise = isValid(id);
 
 promise
@@ -124,4 +124,56 @@ function abc(info) {
     });
 
   return null;
+} */
+
+var a = 100; // this var will be shadowed
+let b = 200; // this will be shadowed (script scoped)
+const c = 300;
+{
+  var a = 10; // now a points to 10
+  let b = 20; // block scoped
+  const c = 30;
+  console.log(a);
+  console.log(b);
+  console.log(c);
 }
+console.log(a); // so this also ouputs 10 regardless of block scope
+console.log(b); // will ouput 200
+console.log(c); // will ouput 300
+
+function z() {
+  let a = 23;
+  function y() {
+    const a = 31;
+    function x() {
+      console.log(a); // 31
+    }
+    x();
+  }
+  y();
+}
+z();
+
+function x() {
+  for (var i = 1; i <= 5; i++) {
+    setTimeout(function () {
+      console.log(i);
+    }, i * 1000);
+  }
+  console.log("Namaste Javascript");
+}
+x();
+
+function x() {
+  for (var i = 1; i <= 5; i++) {
+    function close(i) {
+      setTimeout(function () {
+        console.log(i);
+      }, i * 1000);
+      // put the setT function inside new function close()
+    }
+    close(i); // everytime you call close(i) it creates new copy of i. Only this time, it is with var itself!
+  }
+  console.log("Namaste Javascript");
+}
+x();

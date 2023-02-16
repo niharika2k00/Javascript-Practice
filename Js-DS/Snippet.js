@@ -11,6 +11,12 @@ for (let i = 0; i < 5; i++) {
         As let is a Blocked Scoped thus it changes.
 */
 
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i);
+  }, 1000);
+}
+
 //   -------    SNIPPET - 1   -----------
 function a() {
   for (let i = 0; i < 3; i++) {

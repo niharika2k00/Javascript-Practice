@@ -42,11 +42,40 @@
 
       <br />
       <br />
-      Type Your Name -->
-      <form><input type="text" id="input" name="name" /><br /></form>
+
+      <!-- https://www.w3schools.com/html/html_forms.asp -->
+      <form>
+        <div class="inputForm">
+          <div>
+            <label for="name">Name: </label>
+            <input id="input" type="text" name="arr" />
+          </div>
+
+          <div>
+            <label for="location">Location: </label>
+            <input type="text" name="arr" />
+          </div>
+
+          <div>
+            <label for="favColor">Favourite color: </label>
+            <input type="text" name="arr" />
+          </div>
+        </div>
+
+        <!-- <input type="button" value="Submit" onclick="submitFunc()" /> -->
+        <button type="button" onclick="submitFunc()">Submit</button>
+      </form>
+
       <p id="display"></p>
 
-      <div style="margin: 2rem; align-items: centear; justify-content: center; text-align: center">
+      <div
+        style="
+          margin: 2rem;
+          align-items: centear;
+          justify-content: center;
+          text-align: center;
+        "
+      >
         <button type="button" onclick="clickFunc()">Click Me!</button>
       </div>
 
@@ -70,10 +99,12 @@
         <li>Tea</li>
         <li>Milk</li>
       </ul>
+
+      <p id="para1">Use of classList</p>
     </div>
 
     <!--   JAVASCRIPT   -->
-    <script type="text/javascript" src="./index1.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
 
     <!--  <script>
       console.log("Welcome ! ");

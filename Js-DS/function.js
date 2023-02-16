@@ -1,7 +1,5 @@
 console.log("Welcome to the Javascript World.");
-//   ****       Whenever there is   [ START , END ]  then  END  is always EXCLUSIVE       ****
 
-//   ===  check the value as well as the type while == check only the value.
 var age = "22";
 if (22 === age) console.log("true");
 else console.log("false");
@@ -53,6 +51,7 @@ A();
 // ----------------------------------------------------------------------
 //               CALLBACK  FUNCTION     -->      A callback is a function passed as an argument to another function.
 // ----------------------------------------------------------------------
+//  Example - 1
 function callbackFunction(prev, name) {
   console.log("Hello " + prev + " " + name);
 }
@@ -63,6 +62,20 @@ function outerFunction(prev, callback) {
 }
 
 outerFunction("Miss", callbackFunction); //  Hello Miss Niharika
+
+// Example - 2
+var func2 = () => {
+  let b = "efgh";
+  return b;
+};
+
+var func1 = (cb) => {
+  let a = "abcd";
+  let b = cb();
+  console.log(a + b);
+};
+
+func1(func2);
 
 // -----------------------------------------------------------
 //               STRINGS
@@ -84,9 +97,9 @@ str.substring(7, 13); //  Banana     [exclusive END]
 var num = [2, 45, -100, 96, -32];
 console.log("Result of every()  =>  ", num.every(allPositive)); //  false
 
-function allPositive(el, index, arr) {
+function allPositive(ele, index, arr) {
   console.log("index: ", index);
-  return el > 0;
+  return ele > 0;
 }
 
 // forEach(val, index, arr);
@@ -94,27 +107,37 @@ num.forEach((val, idx) => {
   console.log(val);
 });
 
-//  map(val, index, arr);
+//  map(val, index, arr);   Return: array
 num.map((val, idx, arr) => {
   console.log(val);
 });
 
-num.filter((val, idx, arr) => {
-  console.log(val);
+//  filter(val, index, arr);   Return: array
+var ans = num.filter((val, idx, arr) => {
+  console.log(val); // 2 45 ....
 });
+console.log(ans); // []
+
+//  find()  -->  returns the value of the first element that passes a test.
+num.find((val, idx, arr) => {
+  if (val > 20) return val;
+});
+
+//  array.includes(element, start)
+
 // =======================================================================
 
 var arr = [1, 2, 3];
 console.log([...arr, 5]); // append element that doesn't change the original array
 
-//   slice ()  :   array.slice(start, end)         exclusive END.
+//   slice ()  :   array.slice(start, end)         exclusive END.  [DONOT overwrite the original arr]
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
-console.log(fruits.slice(-3, -1));
+console.log(fruits.slice(-3, -1)); // ['Lemon', 'Apple']
 console.log(fruits.slice(1, 4));
 
 //  splice ()   :    array.splice(index, howMany, item1, ....., itemX)     ==>     REMOVES the element and REPLACE into a new array.
-/* 
-    -  Overwrite the Original Array 
+/*
+    -  Overwrite the Original Array
     -  Add element at postion 2 & remove 1 element
 */
 var prep = ["is", "at", "before", "after", "above"];
@@ -123,18 +146,22 @@ prep.splice(3); // equivalent to prep.splice(3 , 3)   overwrite with NULL
 console.table(prep);
 
 //   fill ()  :   array.fill(value, start, end)
-/* 
+/*
     -  Overwrite the Original Array a
     -  Replace the Element
 */
 fruits = ["Banana", "Orange", "Apple", "Mango"];
 fruits.fill("Kiwi");
-fruits.fill("Kiwi", 0, 1);
+
 console.log(fruits);
 
 // -----------------------------------------------------------
 //                CALL() , APPLY() , BIND()   METHOD        https://www.w3schools.com/js/js_function_bind.asp
-// ----------------------------------------------------------
+// -----------------------------------------------------------
+/*
+    call() method takes arguments separately.
+    apply() method takes arguments as an array
+*/
 const person1 = {
   fname: "Niharika",
   lname: "Dutta",
@@ -146,7 +173,12 @@ const person2 = {
 };
 
 var display = function (place, method) {
-  console.log("Name =  " + this.fname + " " + this.lname, "in", place + ": Method @", method);
+  console.log(
+    "Name =  " + this.fname + " " + this.lname,
+    "in",
+    place + ": Method @",
+    method
+  );
 };
 
 // func.call()  =>  1st parameter refers to the object[this], then rest refers as variables.
@@ -171,11 +203,11 @@ let result = add.bind(this, 2);
 result(3);
 console.log(result);
 
-/* 
+/*
       After (this) :
   add becomes function(2 , y){
     console.log(2 + y);
-  }    
+  }
    and this above function is returned.
 
   Line Next :     result(3)

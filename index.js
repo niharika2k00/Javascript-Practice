@@ -10,7 +10,10 @@ var effectBox = document.querySelector(".effector");
 var inputBox = document.querySelector("#input");
 
 let numberOfChildren = BoxMainDiv.childElementCount;
-console.log("Number of Children inside the main box div ==> ", numberOfChildren); //  OR  .children.length
+console.log(
+  "Number of Children inside the main box div ==> ",
+  numberOfChildren
+); //  OR  .children.length
 
 console.log(
   "Current Node  => ",
@@ -21,9 +24,9 @@ console.log(
   effectBox.className
 );
 
-console.log("Child Nodes of Body => ", document.body.childNodes); //  OR  .children        tagName, nodeName used to get the value of the NODE like DIV SPAN LI UL.
+console.log("Child Nodes of Body => ", document.body.childNodes); //  OR  .children        tagName, nodeName used to get the value of the NODE like DIV SPAN LI UL comment.
 
-/* 
+/*
 let text = "";
 for (let i = 0; i < collection.length; i++) {
   text += collection[i].tagName + "<br>";
@@ -36,16 +39,19 @@ document.getElementById("demo").innerHTML = text;
 // document.querySelector(".box2").style.backgroundColor = "deeppink";
 // console.log(window.getComputedStyle(box2).backgroundColor);
 
-/* 
+/*
       GET THE COLOR OF AN ELEMENT
-    ---------------------------------        
+    ---------------------------------
     1) If style is INLINE then use     ==>     event.target.style.backgroundColor;
-    2) Else       ==>       window.getComputedStyle(box2).backgroundColor
+    2) Else from css file      ==>       window.getComputedStyle(box2).backgroundColor
 */
 
 box2.addEventListener("click", function (event) {
   event.target.style.backgroundColor = "#ff595e";
-  console.log("Get Box Color from Inline Styling :  ", event.target.style.backgroundColor);
+  console.log(
+    "Get Box Color from Inline Styling :  ",
+    event.target.style.backgroundColor
+  );
 });
 
 //  GRAB the Style
@@ -65,9 +71,9 @@ var toggle = (clickedElement, text) => {
   console.log("Final ", text);
 };
 
-// element.addEventListener(event, function, useCapture);     useCapture : BOOLEAN : event bubbling / event capturing.
 function colorChanger(clickedElement, color) {
-  clickedElement.addEventListener("mouseover", function () {
+  clickedElement.addEventListener("mouseover", function (e) {
+    console.log(clickedElement); // e.target
     effectBox.style.backgroundColor = color;
 
     const text = clickedElement.innerHTML;
@@ -101,7 +107,7 @@ inputBox.addEventListener("keyup", function (e) {
   // display.innerText = "<h2>" + e.target.value + "</h2>"; // returns the text content
 
   // content = document.createTextNode(e.target.value);
-  // HTag.appendChild(content);
+  // HTag.appendChild(content);  OR  HTag.innerText = content;
   // display.appendChild(HTag); // Append a NODE as its Child
 });
 
@@ -110,8 +116,20 @@ inputBox.onchange = function () {
   inputBox.value = inputBox.value.toUpperCase();
 };
 
+var arrEle = document.getElementsByName("arr");
+
+const submitFunc = () => {
+  var formData = {
+    name: arrEle[0].value,
+    location: arrEle[1].value,
+    favouriteColor: arrEle[2].value,
+  };
+  console.log("Fetched form data: ", formData);
+};
+
 const clickFunc = () => {
-  window.location = "https://stackoverflow.com/questions/52229901/navigate-to-route-on-button-click";
+  window.location =
+    "https://stackoverflow.com/questions/52229901/navigate-to-route-on-button-click";
 };
 
 const changeSelect = (selectOption) => {
@@ -126,6 +144,7 @@ function clickEventTrigger() {
 //  Remove Nodes  +  Child Node Functionality
 function removeFirstFunc() {
   var list = document.getElementById("list");
+  console.log(list.children);
   if (list.hasChildNodes()) {
     // list.children[0].remove();
     // list.removeChild(list.children[0]);
@@ -133,18 +152,28 @@ function removeFirstFunc() {
   }
 }
 
-console.log();
+var paraEle = document.getElementById("para1");
+paraEle.classList.add("myStyle");
 
-/* 
+paraEle.className = "myStyle";
 
+/*
       var myImage = new Image(10, 10);
       myImage.src = "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg";
       // document.body.appendChild(myImage);
       document.getElementById("main").appendChild(myImage);
 
-    Difference between Element VS Node :    https://www.w3schools.com/jsref/prop_node_parentelement.asp
+    Difference b/w Element vs Node :    https://www.w3schools.com/jsref/prop_node_parentelement.asp
+
+    Difference b/w InnerHTML vs InnerText : https://www.w3schools.com/jsref/prop_node_innertext.asp
+
+    element.addEventListener(event, function, useCapture) :       useCapture : BOOLEAN : event bubbling / event capturing. Add EVENTS to the Element.
 
 
+    childElementCount  OR  children.length
+    childNodes
+    children
 
-
+    firstChild
+    firstElementChild
 */
