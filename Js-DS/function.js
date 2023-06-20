@@ -124,11 +124,19 @@ num.find((val, idx, arr) => {
 });
 
 //  array.includes(element, start)
-
-// =======================================================================
+let text = "hello world";
+text.includes("world");
 
 var arr = [1, 2, 3];
-console.log([...arr, 5]); // append element that doesn't change the original array
+console.log([...arr, 5]); // [1 2 3 5] append element that doesn't change the original array
+
+const user = { 
+    'name': 'Alex',
+    'address': '15th Park Avenue',
+    'age': 43
+}
+var updatedUser = {...user, age:20};  // update age parameter value
+
 
 //   slice ()  :   array.slice(start, end)         exclusive END.  [DONOT overwrite the original arr]
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
