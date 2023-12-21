@@ -130,13 +130,12 @@ text.includes("world");
 var arr = [1, 2, 3];
 console.log([...arr, 5]); // [1 2 3 5] append element that doesn't change the original array
 
-const user = { 
-    'name': 'Alex',
-    'address': '15th Park Avenue',
-    'age': 43
-}
-var updatedUser = {...user, age:20};  // update age parameter value
-
+const user = {
+  name: "Alex",
+  address: "15th Park Avenue",
+  age: 43,
+};
+var updatedUser = { ...user, age: 20 }; // update age parameter value
 
 //   slice ()  :   array.slice(start, end)         exclusive END.  [DONOT overwrite the original arr]
 var fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
@@ -167,7 +166,7 @@ console.log(fruits);
 //                CALL() , APPLY() , BIND()   METHOD        https://www.w3schools.com/js/js_function_bind.asp
 // -----------------------------------------------------------
 /*
-    call() method takes arguments separately.
+    call() method takes arguments separately. Function passed as arguement has context of this, explicitly sets it and controls the execution context of the fn.s
     apply() method takes arguments as an array
 */
 const person1 = {
@@ -189,7 +188,7 @@ var display = function (place, method) {
   );
 };
 
-// func.call()  =>  1st parameter refers to the object[this], then rest refers as variables.
+// func.call()  =>  1st parameter refers to the object[this], then rest refers as variables. Here, the func passed is referred to as this
 display.call(person1, "Denmark", "all()");
 display.call(person2);
 
@@ -230,6 +229,26 @@ const addCurry = (a) => {
   };
 };
 console.log(addCurry(2)(3)(5)); //  10
+
+//  Example : 3
+var calc = {
+  total: 0,
+  add(a) {
+    this.total += a;
+    return this; // cuz need to return the whole obj then only can able to access other fn
+  },
+  subtract(a) {
+    this.total -= a;
+    return this;
+  },
+  multiply(a) {
+    this.total *= a;
+    return this;
+  },
+};
+
+const result = calc.add(10).multiply(4).subtract(3).add(8);
+console.log(result.total);
 
 // -----------------------------------------------------------
 //               MAP

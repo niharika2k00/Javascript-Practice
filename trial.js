@@ -5,12 +5,12 @@ console.log(message); // undefined
 message = "The variable Has been hoisted";
 
 // In JavaScript, all objects interact by REFERENCE when setting them equal to each other.
-let c = { greeting: "Hey!" };
-let d;
+// let c = { greeting: "Hey!" };
+// let d;
 
-d = c;
-c.greeting = "Hello";
-console.log(d.greeting); // Hello
+// d = c;
+// c.greeting = "Hello";
+// console.log(d.greeting); // Hello
 
 /* background-image: linear-gradient(rgba(0, 0, 0, 0.882), rgba(0, 0, 0, 0.886)), url(./images/Cse.jpg);
 
@@ -18,162 +18,52 @@ console.log(d.greeting); // Hello
   background: rgba(238, 238, 238, 0.116);
 } */
 
-// const obj = {
-//   name: "John",
-//   mystry: () => {
-//     const nestedObj = {
-//       name: "Fizz",
-//       internal: this.name,
-//       logName: function () {
-//         console.log(this.name);
-//       },
-//     };
-//     nestedObj.logName();
-//     console.log(nestedObj);
-//   },
-// };
+var memoizedFunc = (func) => {
+  const cache = {};
+  return function (...args) {
+    console.log(args);
+    var argsCache = JSON.stringify(args); // [2312, 1029]
 
-// obj.mystry();
-
-var mom_name = "Bobby";
-
-const parent = {
-  mom_name: "Chimpu",
-  mother: () => {
-    mom_name = "Lorry";
-    return `${this.mom_name} is my mother.`;
-  },
+    if (!cache[argsCache]) {
+      cache[argsCache] = func.call(this, ...args);
+    } else return cache[argsCache];
+  };
 };
 
-console.log(parent.mother());
+// var memoizedFunc = (func, params) => {
+//   const res = {};
+//   return function (...args) {
+//     console.log(args);
+//     var argsCache = JSON.stringify(args); // [2312, 1029]
 
-// const cart = ["dress", "shoes", "laptop", "softtoy"];
+//     if (!res[argsCache]) {
+//       res[argsCache] = func.apply(params || this, ...args);
+//     } else return res[argsCache];
+//   };
+// };
 
-// //  passing a func[risky DND] that depends on other func passed in CallBack
-// createOrder(cart, function (orderId) {
-//   proceedToPayment(orderId);
-// });
+const messyFunc = (num1, num2) => {
+  for (var i = 0; i <= 1000000000; i++) {}
+  return num1 * num2;
+};
 
-// createOrder(cart, function (orderId) {
-//   proceedToPayment(orderId, function () {
-//     getDetails(orderId);
-//   });
-// });
+const result = memoizedFunc(messyFunc);
 
-// // attaching a func
-// const promise = createOrder(cart);
+console.time("First func call");
+console.log(result(2312, 1029));
+console.timeEnd("First func call");
 
-// promise.then(function (orderId) {
-//   proceedToPayment(orderId);
-// });
+console.time("Second func call");
+console.log(result(2312, 1029));
+console.timeEnd("Second func call");
 
-// returning the data as the next func depends on it.
-// createOrder(cart)
-//   .then(function (orderId) {
-//      return proceedToPayment(orderId);
-//   }
-//   .then(function (orderId) {
-//      return getDetails(orderId);
-//   })
-
-// -----------------------------------------
-
-/* var id = "demo@6";
-const promise = isValid(id);
-
-promise
-  .then(function (data) {
-    console.log(data); // log for resolve
-    return data;
-  })
-  .then((data) => {
-    return abc(data); // returning promise obj
-  })
-  .then((res) => {
-    console.log(res);
-  })
-  .catch(function (err) {
-    console.log(err);
-  });
-
-function isValid(id) {
-  const pr = new Promise(function (resolve, reject) {
-    if (check(id)) {
-      setTimeout(function () {
-        resolve(id);
-      }, 5000);
-    } else {
-      const err = new Error("Validation failed!");
-      reject(err);
-    }
-  });
-
-  console.log(pr);
-  return pr;
+function greet() {
+  console.log(`Hello, my name is ${this.name}`);
 }
 
-function check(id) {
-  if (id.includes("@") || id.includes("#") || id.includes("$")) return true;
-  return false;
-}
+const person1 = { name: "Alice" };
+const person2 = { name: "Bob" };
 
-function abc(info) {
-  if (info)
-    return new Promise(function (resolve, reject) {
-      resolve("Ahh! success.");
-    });
-
-  return null;
-} */
-
-var a = 100; // this var will be shadowed
-let b = 200; // this will be shadowed (script scoped)
-const c = 300;
-{
-  var a = 10; // now a points to 10
-  let b = 20; // block scoped
-  const c = 30;
-  console.log(a);
-  console.log(b);
-  console.log(c);
-}
-console.log(a); // so this also ouputs 10 regardless of block scope
-console.log(b); // will ouput 200
-console.log(c); // will ouput 300
-
-function z() {
-  let a = 23;
-  function y() {
-    const a = 31;
-    function x() {
-      console.log(a); // 31
-    }
-    x();
-  }
-  y();
-}
-z();
-
-function x() {
-  for (var i = 1; i <= 5; i++) {
-    setTimeout(function () {
-      console.log(i);
-    }, i * 1000);
-  }
-  console.log("Namaste Javascript");
-}
-x();
-
-function x() {
-  for (var i = 1; i <= 5; i++) {
-    function close(i) {
-      setTimeout(function () {
-        console.log(i);
-      }, i * 1000);
-      // put the setT function inside new function close()
-    }
-    close(i); // everytime you call close(i) it creates new copy of i. Only this time, it is with var itself!
-  }
-  console.log("Namaste Javascript");
-}
-x();
+// Using call to invoke the function and specifying the context for 'this'
+greet.call(person1); // Outputs: Hello, my name is Alice
+greet.call(person2); // Outputs: Hello, my name is Bob

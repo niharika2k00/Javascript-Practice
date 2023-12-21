@@ -41,11 +41,11 @@ function fun() {
   i++;
   setTimeout(() => {
     console.log(i--);
-  }, 400);
+  }, 1000);
 }
 
 for (let i = 0; i < 3; i++) {
-  fun(i);
+  fun();
 }
 
 /*    Output : 3 2 1
@@ -53,10 +53,15 @@ for (let i = 0; i < 3; i++) {
       So it just access the i variable Globally not the let inside for loop.
 
       If i is passed from the for loop then it will be  1 2 3 as in that case. See the next snippet.
+
+      CLOSURE:
+ Closure is the function with its own lexical environment which executes separately. And it remembers the reference to i, ❌ the value of i.
+ Hence, while using loop var 0-5, first time it refers to i=0 block in the memory and in the meantime the loop runs from 0-5 then i value
+ changes to 6. Then the  settimeout func also completes and get i=6 at that memory reference.
+ So it prints 6 multiple times.
 */
 
 //   -------    SNIPPET - 3   -----------
-let i = 0;
 function fun(i) {
   i++;
   setTimeout(() => {
@@ -84,7 +89,8 @@ console.log(a);
 42
 number
 undefined
-not defined */
+not defined
+*/
 
 (function () {
   try {
@@ -106,7 +112,7 @@ undefined
         Explanation :
   variable a is function scoped so its available Locally in the function Execution Context
   Whereas variable b is not declared in function scope so by default its being declared in the GLOBAL EXECUTION Context.
- */
+*/
 
 function aa() {
   return (() => 0)();
@@ -327,7 +333,7 @@ var calculate = function (radiusArr, Operation) {
 
 console.log(calculate(radiusArr, Area)); // Higher Order Function
 
-//   -------    SNIPPET - 16   -----------
+//   -------    SNIPPET - 16 (IMP 📍)  -----------
 const obj = {
   name: "John",
   mystry: function () {
@@ -343,7 +349,7 @@ const obj = {
 };
 
 obj.mystry(); //  John
-/*      Bcz arrow function takes the "this" scope of parent.
+/*      Bcz arrow function takes the "this" scope of parent i.e window object.
   If its function() {...}  then it would have been Fizz.
 */
 
@@ -437,3 +443,53 @@ function promise1(info) {
 
   return null;
 }
+
+
+
+
+var a = 100; // this var will be shadowed
+let b = 200; // this will be shadowed (script scoped)
+const c = 300;
+{
+  var a = 10; // now a points to 10
+  let b = 20; // block scoped so its totally a different variable
+  const c = 30;
+  console.log(a);
+  console.log(b);
+  console.log(c);
+}
+console.log(a); // so this also ouputs 10 regardless of block scope
+console.log(b); // will ouput 200
+console.log(c); // will ouput 300
+
+
+// -----------------------------------------------------
+//        Implement Caching / Memoize Function
+// -----------------------------------------------------
+var memoizedFunc = (func, params) => {
+  const res = {};
+  return function (...args) {
+    console.log(args);
+    var argsCache = JSON.stringify(args); // [2312, 1029]
+
+    if (!res[argsCache]) {
+      res[argsCache] = func(params || this, ...args);
+    } else return res[argsCache];
+  };
+};
+
+const messyFunc = (num1, num2) => {
+  for (var i = 0; i <= 1000000000; i++) {}
+  return num1 * num2;
+};
+
+const result = memoizedFunc(messyFunc);
+
+console.time("First func call");
+console.log(result(2312, 1029)); // messyFunc(num1, num2)
+console.timeEnd("First func call");
+
+console.time("Second func call");
+console.log(result(2312, 1029));
+console.timeEnd("Second func call");
+
